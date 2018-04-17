@@ -57,22 +57,22 @@ public class TelaLogin extends JFrame implements ActionListener{
 		txtSenha.setColumns(20);
 		panel_2.add(txtSenha);
 		
+		ButtonGroup grupo = new ButtonGroup(); //Cria um grupo de botões para que não haja a seleção simultânea de ambos
+		
 		JPanel panel_3 = new JPanel();
 		panel_1.add(panel_3, BorderLayout.CENTER);
-		
-		ButtonGroup grupo = new ButtonGroup(); //Cria um grupo de botões para que não haja a seleção simultânea de ambos
 		rdbtnOperacional = new JRadioButton("Operador");
 		rdbtnOperacional.setSelected(true); //Começa o programa com este selecionado
 		rdbtnOperacional.addActionListener(this); //Quando o botão estiver selecionado, desencadeia uma ação 
 		rdbtnOperacional.setActionCommand("operacional"); //Quando este for selecionado, crie uma String "operacional" para ser usada
 		grupo.add(rdbtnOperacional); //Adiciona o botão ao grupo
 		panel_3.add(rdbtnOperacional);
-	
-		rdbtnRelatorio = new JRadioButton("Administrador");
-		grupo.add(rdbtnRelatorio); //Adiciona o botão ao grupo
-		rdbtnRelatorio.addActionListener(this); //Quando o botão estiver selecionado, desencadeia uma ação 
-		rdbtnRelatorio.setActionCommand("relatorio"); //Quando este for selecionado, crie uma String "relatorio" para ser usada
-		panel_3.add(rdbtnRelatorio);
+		
+			rdbtnRelatorio = new JRadioButton("Administrador");
+			grupo.add(rdbtnRelatorio); //Adiciona o botão ao grupo
+			rdbtnRelatorio.addActionListener(this); //Quando o botão estiver selecionado, desencadeia uma ação 
+			rdbtnRelatorio.setActionCommand("relatorio"); //Quando este for selecionado, crie uma String "relatorio" para ser usada
+			panel_3.add(rdbtnRelatorio);
 
 		panel_2.setVisible(false); //Inicia o programa com o painel de senha invisível, pois o botão operacional estará selecionado
 		setLocationRelativeTo(null); //Faz com que a tela apareca no meio 

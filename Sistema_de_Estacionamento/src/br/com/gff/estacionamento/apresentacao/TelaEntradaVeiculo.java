@@ -8,10 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import br.com.gff.estacionamento.controle.EstacionamentoController;
+import br.com.gff.estacionamento.controle.EstacionamentoExcepion;
+import br.com.gff.estacionamento.controle.VeiculoException;
 
 public class TelaEntradaVeiculo extends JFrame implements ActionListener{
 	
@@ -94,10 +97,15 @@ public class TelaEntradaVeiculo extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent evento) {
 		if(evento.getActionCommand().equals("ok")) {
 			EstacionamentoController controle = new EstacionamentoController();
-			controle.processarEntrada(txfPlac.getText(), 
-									  txtMarca.getText(), 
-									  txtModelo.getText(), 
-									  txtCor.getText()); //Pega os dados dos campos preenchido e envia para o Controller
+			try {
+				controle.processarEntrada(txfPlac.getText(), 
+										  txtMarca.getText(), 
+										  txtModelo.getText(), 
+										  txtCor.getText()); //Pega os dados dos campos preenchido e envia para o Controller
+				JOptionPane.showMessageDialog(null, "Entrada confirmada", "Veiculo registrado", JOptionPane.INFORMATION_MESSAGE); //Caso não tenha erro cria a janela e mostra uma mensagem de sucesso
+			} catch (EstacionamentoExcepion | VeiculoException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Falha na entrada", JOptionPane.ERROR_MESSAGE); //Caso tenha um erro, ele é mostrado na tela
+			} 
 		}
 		this.parent.setVisible(true);
 		this.dispose();

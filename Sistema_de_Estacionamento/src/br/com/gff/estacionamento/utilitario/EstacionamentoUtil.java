@@ -1,6 +1,9 @@
 package br.com.gff.estacionamento.utilitario;
 
+import java.util.regex.Pattern;
+
 import br.com.gff.estacionamento.negocios.Movimentacao;
+import jdk.nashorn.internal.runtime.regexp.joni.Matcher;
 
 /**
  * Representa uma classe de apoio para o sistema.
@@ -18,9 +21,11 @@ public class EstacionamentoUtil {
 	 * @param placa Placa do veículo
 	 * @return true se atender o padrão, false se não.
 	 */
-	public boolean validarPadraoPlaca(String placa) {
-		//TODO implementar ValidarPadraoPlaca
-		return false;
+	public static boolean validarPadraoPlaca(String placa) {
+		String padrao = "[A_Z][A_Z][A_Z]-[0_9][0_9][0_9][0_9]"; //Cria o padrão com 3 letras maiúsculas e 4 números
+		Pattern p = Pattern.compile(padrao); //Recebe este padrão
+		java.util.regex.Matcher m = p.matcher(placa); //Faz a comparação do padrão definido com o padrão declarado
+		return m.matches(); //Retorna os erros, caso tenha
 	}
 	
 	/**

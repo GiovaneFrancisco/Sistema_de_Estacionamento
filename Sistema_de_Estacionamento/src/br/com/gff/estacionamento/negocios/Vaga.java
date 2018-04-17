@@ -20,9 +20,9 @@ public class Vaga {
 	 * Verifica a existência de alguma vaga livre no estacionamento.
 	 * @return true se houver alguma vaga livre e false se nao houver.
 	 */
-	public boolean temVagaLivre() {
+	public static boolean temVagaLivre() {
 		//TODO implementar temVagaLivre
-		return false;
+		return true;
 	}
 	
 	/**
